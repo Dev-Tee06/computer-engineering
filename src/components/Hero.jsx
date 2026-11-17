@@ -13,7 +13,7 @@ export default function Hero() {
       <div className="hero__content container">
         <div className="hero__label">
           <span className="hero__label-dot" />
-          CPE 505 · Computer Graphics and Animation
+          CPE 505 Group 8
         </div>
 
         <h1 className="hero__heading">

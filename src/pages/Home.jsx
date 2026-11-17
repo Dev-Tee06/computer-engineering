@@ -38,7 +38,6 @@ export default function Home() {
       {/* Group Members preview */}
       <section className="home-members">
         <div className="container">
-          <div className="section-label">Our Team</div>
           <div className="home-members-header">
             <div>
               <h2 className="section-title">Group Members</h2>

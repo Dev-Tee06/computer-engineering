@@ -3,10 +3,10 @@ import { ChevronRight, Pause, Play, RotateCcw, Volume2, VolumeX } from 'lucide-r
 import './CrazyMotionStudio.css';
 
 const voiceLines = [
-  { lead: '"LOOK AT ME!"', message: 'Do you see someone who has given up?' },
-  { lead: '', message: '"I have lost the ability to walk... but I have not lost my dreams."' },
-  { lead: '', message: '"You measure strength by movement. I measure it by the courage to keep going."' },
-  { lead: '"MY STORY IS NOT OVER!"', message: 'And neither is yours.' },
+  { lead: '"YOU SEE MY STRUGGLE..."', message: 'But you cannot see the battles I have already survived.' },
+  { lead: '"I MOVE THROUGH THE WORLD DIFFERENTLY."', message: 'My dreams have never moved an inch.' },
+  { lead: '"EVERY CLOSED DOOR MAKES ME LOUDER."', message: 'I will choose my own path, one courageous step at a time.' },
+  { lead: '"MY STORY IS NOT OVER!"', message: 'I will write every next chapter myself.' },
 ];
 
 function SceneCard({ number, title, description, sceneClass, children, controls }) {
@@ -59,28 +59,26 @@ export default function CrazyMotionStudio() {
       <div className="cms-scenes">
         <SceneCard
           number="01"
-          title="The Great Chase"
-          description="A curious cat, one quick mouse, and a sunny afternoon."
+          title="Cat & Rat: Garden Chase"
+          description="A curious cat watches as a quick rat circles the sunny 3D garden."
           sceneClass="cms-cat-scene"
         >
-          <div className="cms-scene-title">THE GREAT CHASE</div>
+          <div className="cms-scene-title">THE GARDEN CHASE</div>
           <div className="cms-cat-sun" />
           <div className="cms-grass" />
-          <div className="cms-cat-shadow" />
-          <div className="cms-cat-character">
+          <div className="cms-cat-character" role="img" aria-label="A stationary cat">
             <span className="cms-cat-face">🐈</span>
           </div>
-          <div className="cms-mouse-track">
-            <div className="cms-mouse-character">🐁</div>
+          <div className="cms-rat-character" role="img" aria-label="Rat circling the cat">
+            <span>🐀</span>
           </div>
-          <div className="cms-cat-z">?!</div>
-          <div className="cms-cat-caption">"COME BACK HERE!" 😂</div>
+          <div className="cms-cat-caption">ROUND AND ROUND THEY GO!</div>
         </SceneCard>
 
         <SceneCard
           number="02"
           title="Danfo: Lagos Traffic"
-          description="Gridlock, a busy road, and the conductor's call."
+          description="A detailed 3D Danfo turns on a Lagos street."
           sceneClass="cms-danfo-scene"
           controls={
             <button
@@ -106,23 +104,25 @@ export default function CrazyMotionStudio() {
           </div>
           <div className="cms-road">
             <div className="cms-lane" />
-            <div className="cms-vehicle cms-other-car">🚗</div>
-            <div className="cms-vehicle cms-truck">🚚</div>
             <div className="cms-danfo">
-              <div className="cms-danfo-sign">LAGOS DANFO</div>
-              <div className="cms-danfo-ws" />
-              <div className="cms-danfo-body">
-                <span className="cms-window">▰</span>
-                <span className="cms-window">▰</span>
-                <span className="cms-window">▰</span>
-                <span className="cms-window">▰</span>
+              <div className="cms-danfo-top" />
+              <div className="cms-danfo-side">
+                <div className="cms-danfo-sign">LAGOS DANFO</div>
+                <span className="cms-window" />
+                <span className="cms-window" />
+                <span className="cms-window" />
+                <span className="cms-window" />
+                <div className="cms-danfo-door" />
               </div>
+              <div className="cms-danfo-rear" />
               <div className="cms-danfo-front">
                 <div className="cms-headlight" />
                 <div className="cms-bumper" />
               </div>
-              <div className="cms-dwheel cms-dlw" />
-              <div className="cms-dwheel cms-drw" />
+              <div className="cms-dwheel cms-dwheel--one" />
+              <div className="cms-dwheel cms-dwheel--two" />
+              <div className="cms-dwheel cms-dwheel--far cms-dwheel--one" />
+              <div className="cms-dwheel cms-dwheel--far cms-dwheel--two" />
             </div>
             <div className="cms-road-line" />
           </div>

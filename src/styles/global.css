@@ -1,5 +1,5 @@
 /* ============================================================
-   global.css — Base styles for the CPE 505 Exhibition
+   global.css — Base styles for Group 8
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
@@ -85,13 +85,6 @@ img {
   text-transform: uppercase;
   color: var(--cyan-accent);
   margin-bottom: 16px;
-}
-
-.section-label::before {
-  content: '';
-  width: 24px;
-  height: 2px;
-  background: var(--cyan-accent);
 }
 
 .section-title {

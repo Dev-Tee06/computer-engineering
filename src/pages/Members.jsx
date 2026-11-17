@@ -12,7 +12,6 @@ export default function Members() {
               <Users size={28} />
             </div>
             <div>
-              <div className="section-label">Our Team</div>
               <h1 className="section-title">Group Members</h1>
               <p className="section-subtitle">
                 All 500-level Computer Engineering students who contributed to this

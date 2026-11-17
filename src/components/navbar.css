@@ -63,10 +63,6 @@
   line-height: 1;
 }
 
-.navbar__brand-short {
-  color: var(--blue-accent);
-}
-
 /* ── Desktop nav ─────────────────────── */
 .navbar__nav {
   display: flex;

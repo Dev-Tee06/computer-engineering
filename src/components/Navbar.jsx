@@ -31,10 +31,7 @@ export default function Navbar() {
           <div className="navbar__brand-icon">
             <img src={logoImage} alt="" className="navbar__brand-logo" />
           </div>
-          <span className="navbar__brand-text">
-            <span className="navbar__brand-short">CPE</span>
-            <span className="navbar__brand-long">505 Exhibition</span>
-          </span>
+          <span className="navbar__brand-text">CPE 505 Group 8</span>
         </Link>
 
         <nav className={`navbar__nav${open ? ' navbar__nav--open' : ''}`}>
