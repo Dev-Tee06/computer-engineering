@@ -1,0 +1,49 @@
+.academic {
+  padding: 56px 0;
+  border-top: 1px solid var(--navy-border);
+  border-bottom: 1px solid var(--navy-border);
+  background: linear-gradient(to bottom, #fff 0%, #f8fafc 100%);
+}
+
+.academic__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.academic__card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+}
+
+.academic__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(24, 24, 27, 0.06);
+  border: 1px solid rgba(24, 24, 27, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #27272a;
+  flex-shrink: 0;
+}
+
+.academic__label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.academic__value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}

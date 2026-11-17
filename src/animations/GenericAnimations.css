@@ -1,0 +1,147 @@
+/* Generic reusable CSS animations for students with partial source */
+
+/* ── Generic Bouncing Ball ───────────── */
+.gen-ball-wrap {
+  width: 100%; height: 280px;
+  border-radius: 12px; overflow: hidden; position: relative;
+  background: linear-gradient(to bottom, #1e3a5f, #0f2040);
+}
+.gen-ball {
+  position: absolute;
+  width: 50px; height: 50px; border-radius: 50%;
+  left: 10%; bottom: 20px;
+  animation: gen-ball-travel 3s ease-in-out infinite alternate,
+             gen-ball-bounce 0.9s ease-in-out infinite;
+}
+.gen-ball.red    { background: radial-gradient(circle at 35% 30%, #f87171, #dc2626, #7f1d1d); }
+.gen-ball.orange { background: radial-gradient(circle at 35% 30%, #fed7aa, #f97316, #7c2d12); }
+.gen-ball.blue   { background: radial-gradient(circle at 35% 30%, #bfdbfe, #3b82f6, #1e3a8a); }
+.gen-ball-shadow {
+  position: absolute; left: calc(10% + 2px); bottom: 12px;
+  width: 46px; height: 10px;
+  background: rgba(0,0,0,0.5); border-radius: 50%; filter: blur(4px);
+  animation: gen-ball-travel 3s ease-in-out infinite alternate,
+             gen-shadow-scale 0.9s ease-in-out infinite;
+}
+.gen-floor {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 20px;
+  background: rgba(255,255,255,0.05);
+}
+@keyframes gen-ball-travel {
+  from { left: 10%; } to { left: 80%; }
+}
+@keyframes gen-ball-bounce {
+  0%, 100% { bottom: 20px; transform: scaleX(1.2) scaleY(0.7); }
+  50%      { bottom: 170px; transform: scaleX(0.9) scaleY(1.1); }
+}
+@keyframes gen-shadow-scale {
+  0%, 100% { transform: scaleX(1.2); opacity: 0.6; }
+  50%      { transform: scaleX(0.4); opacity: 0.2; }
+}
+
+/* ── Generic Moving Car ──────────────── */
+.gen-car-wrap {
+  width: 100%; height: 220px; border-radius: 12px; overflow: hidden;
+  position: relative; background: linear-gradient(#87ceeb 60%, #bae6fd);
+}
+.gen-road { position: absolute; bottom: 0; width: 100%; height: 60px; background: #374151; }
+.gen-road-line {
+  position: absolute; bottom: 0; width: 100%; height: 60px;
+  background: repeating-linear-gradient(90deg, #fff 0 30px, transparent 30px 60px) center / 60px 4px no-repeat;
+  top: 28px;
+}
+.gen-car {
+  position: absolute; bottom: 55px; left: -170px;
+  animation: gen-car-drive 7s linear infinite;
+}
+.gen-car-body {
+  width: 160px; height: 36px; background: var(--gc, #dc2626); border-radius: 8px;
+  position: relative; bottom: 10px;
+}
+.gen-car-roof {
+  width: 86px; height: 28px; background: color-mix(in srgb, var(--gc, #dc2626), black 20%);
+  border-radius: 14px 14px 0 0;
+  position: absolute; bottom: 36px; left: 36px;
+}
+.gen-wheel {
+  position: absolute; bottom: 0; width: 28px; height: 28px;
+  background: #111; border: 4px solid #9ca3af; border-radius: 50%;
+  animation: gen-wheel-spin 0.5s linear infinite;
+}
+.gen-wheel.fw { right: 14px; }
+.gen-wheel.bw { left: 14px; }
+@keyframes gen-car-drive { from { transform: translateX(0); } to { transform: translateX(calc(100vw + 200px)); } }
+@keyframes gen-wheel-spin { to { transform: rotate(360deg); } }
+
+/* ── Generic Moon ────────────────────── */
+.gen-moon-wrap {
+  width: 100%; height: 220px; border-radius: 12px; overflow: hidden;
+  position: relative; background: radial-gradient(ellipse at 60% 60%, #1e3a8a, #020617);
+}
+.gen-moon-stars {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 10% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 30% 70%, #fff, transparent),
+    radial-gradient(2px 2px at 55% 15%, #fff, transparent),
+    radial-gradient(1px 1px at 75% 50%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 90% 30%, #fff, transparent);
+  background-size: 200px 200px;
+  animation: gen-moon-twinkle 3s ease-in-out infinite alternate;
+}
+@keyframes gen-moon-twinkle { from { opacity: .4; } to { opacity: 1; } }
+.gen-moon {
+  position: absolute; border-radius: 50%; overflow: hidden;
+  width: 70px; height: 70px;
+  background: radial-gradient(circle at 35% 30%, #fffef5, #e8e3d0 50%, #a9a493);
+  box-shadow: 0 0 40px 8px rgba(255,245,210,.3);
+  animation: gen-moon-travel 10s ease-in-out infinite alternate;
+  top: 30px; left: 5%;
+}
+.gen-moon-shade {
+  position: absolute; inset: 0; border-radius: 50%;
+  animation: gen-moon-phase 10s ease-in-out infinite alternate;
+}
+@keyframes gen-moon-travel {
+  from { left: 5%; top: 30px; }
+  to   { left: 80%; top: 60px; }
+}
+@keyframes gen-moon-phase {
+  from { box-shadow: inset 25px 0 20px 5px rgba(2,6,23,.95); }
+  to   { box-shadow: inset -25px 0 20px 5px rgba(2,6,23,.95); }
+}
+.gen-hills {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 55px;
+  background: #05060f;
+  clip-path: polygon(0 60%, 15% 30%, 30% 55%, 50% 20%, 70% 50%, 85% 35%, 100% 55%, 100% 100%, 0 100%);
+}
+
+/* ── Generic Orbiting Moon ───────────── */
+.gen-orbit-wrap {
+  width: 100%; height: 280px; border-radius: 12px; overflow: hidden;
+  position: relative; background: #020617;
+  display: flex; align-items: center; justify-content: center;
+}
+.gen-orbit-earth {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #60a5fa, #1d4ed8, #1e3a8a);
+  box-shadow: 0 0 30px rgba(37,99,235,.4);
+  position: relative; z-index: 2;
+}
+.gen-orbit-track {
+  position: absolute; border-radius: 50%;
+  width: 200px; height: 200px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.gen-orbit-moon-wrap {
+  position: absolute;
+  width: 200px; height: 200px;
+  animation: gen-orbit-spin 6s linear infinite;
+}
+.gen-orbit-moon {
+  position: absolute;
+  top: -15px; left: 50%; transform: translateX(-50%);
+  width: 30px; height: 30px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fffef5, #a9a493);
+}
+@keyframes gen-orbit-spin { to { transform: rotate(360deg); } }

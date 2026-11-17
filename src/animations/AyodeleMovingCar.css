@@ -1,0 +1,158 @@
+/* Ayodele — Moving 3D Car */
+
+.ayd-car-wrap {
+  width: 100%; height: 420px;
+  background: linear-gradient(#0b1d3a 0%, #3a4a7a 55%, #f4a261 100%);
+  border-radius: 12px; overflow: hidden; position: relative;
+}
+
+.ayd-car-scene {
+  width: 100%; height: 100%;
+  perspective: 1100px; perspective-origin: 50% 30%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.ayd-car-world {
+  position: relative; width: 0; height: 0;
+  transform-style: preserve-3d;
+  animation: ayd-c-orbit 9s ease-in-out infinite alternate;
+}
+
+@keyframes ayd-c-orbit {
+  from { transform: translateY(70px) rotateX(-18deg) rotateY(-55deg); }
+  to   { transform: translateY(70px) rotateX(-18deg) rotateY(-15deg); }
+}
+
+.ayd-grass, .ayd-road {
+  position: absolute;
+  mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+}
+
+.ayd-grass {
+  width: 3000px; height: 1600px; left: -1500px; top: -800px;
+  background: #1f3b2c;
+  transform: translateY(2px) rotateX(90deg);
+}
+
+.ayd-road {
+  width: 3000px; height: 320px; left: -1500px; top: -160px;
+  background:
+    linear-gradient(#e8e8e8,#e8e8e8) 0 10px/100% 6px no-repeat,
+    linear-gradient(#e8e8e8,#e8e8e8) 0 calc(100% - 16px)/100% 6px no-repeat,
+    #2b2b30;
+  transform: rotateX(90deg);
+}
+
+.ayd-dashes {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, #f5f5f5 50%, transparent 50%) 0 50% / 120px 8px repeat-x;
+  animation: ayd-c-scroll 0.5s linear infinite;
+}
+
+@keyframes ayd-c-scroll {
+  from { background-position: 0 50%; }
+  to   { background-position: -120px 50%; }
+}
+
+.ayd-car-root {
+  position: absolute; transform-style: preserve-3d;
+  animation: ayd-c-rotate 8s linear infinite;
+}
+
+@keyframes ayd-c-rotate {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+
+.ayd-shadow-el {
+  position: absolute; width: 260px; height: 130px;
+  left: -130px; top: -65px;
+  background: radial-gradient(ellipse, rgba(0,0,0,.6), transparent 70%);
+  transform: translateY(-1px) rotateX(90deg);
+}
+
+.ayd-bob {
+  position: absolute; transform-style: preserve-3d;
+  animation: ayd-c-bob .3s ease-in-out infinite alternate;
+}
+
+@keyframes ayd-c-bob { to { transform: translateY(-2px); } }
+
+/* Generic 3D box */
+.ayd-box {
+  position: absolute;
+  width: var(--w); height: var(--h);
+  left: calc(var(--w) / -2); top: calc(var(--h) / -2);
+  transform: translate3d(var(--x, 0px), var(--y, 0px), 0);
+  transform-style: preserve-3d;
+}
+
+.ayd-box > div { position: absolute; }
+.ayd-box .f, .ayd-box .k { width: var(--w); height: var(--h); left: 0; top: 0; }
+.ayd-box .f { transform: translateZ(calc(var(--d) / 2)); }
+.ayd-box .k { transform: rotateY(180deg) translateZ(calc(var(--d) / 2)); }
+.ayd-box .r, .ayd-box .l {
+  width: var(--d); height: var(--h);
+  left: calc((var(--w) - var(--d)) / 2); top: 0;
+}
+.ayd-box .r { transform: rotateY(90deg)  translateZ(calc(var(--w) / 2)); }
+.ayd-box .l { transform: rotateY(-90deg) translateZ(calc(var(--w) / 2)); }
+.ayd-box .t, .ayd-box .b {
+  width: var(--w); height: var(--d);
+  left: 0; top: calc((var(--h) - var(--d)) / 2);
+}
+.ayd-box .t { transform: rotateX(90deg)  translateZ(calc(var(--h) / 2)); }
+.ayd-box .b { transform: rotateX(-90deg) translateZ(calc(var(--h) / 2)); }
+
+/* Body */
+.ayd-cbody { --w:230px;--h:38px;--d:100px;--y:-35px; }
+.ayd-cbody .f,.ayd-cbody .k { background:#e63946; }
+.ayd-cbody .r { background:#c8252e; }
+.ayd-cbody .l { background:#a01020; }
+.ayd-cbody .t { background:#f07070; }
+.ayd-cbody .b { background:#222; }
+.ayd-cbody .r::before,.ayd-cbody .r::after {
+  content:""; position:absolute; top:8px; width:18px; height:11px;
+  border-radius:3px; background:#fff3b0;
+  box-shadow:0 0 16px 4px rgba(255,235,120,.8);
+}
+.ayd-cbody .l::before,.ayd-cbody .l::after {
+  content:""; position:absolute; top:8px; width:18px; height:10px;
+  border-radius:3px; background:#ff1f1f;
+  box-shadow:0 0 12px 3px rgba(255,30,30,.7);
+}
+.ayd-cbody .r::before,.ayd-cbody .l::before { left:8px; }
+.ayd-cbody .r::after,.ayd-cbody .l::after   { right:8px; }
+
+/* Cabin */
+.ayd-ccabin { --w:120px;--h:32px;--d:88px;--x:-22px;--y:-70px; }
+.ayd-ccabin .f,.ayd-ccabin .k,.ayd-ccabin .l,.ayd-ccabin .r {
+  background:linear-gradient(135deg,rgba(190,235,255,.9),rgba(80,140,200,.9));
+  border:4px solid #8a1520;
+}
+.ayd-ccabin .t { background:#f07070; }
+.ayd-ccabin .b { background:#222; }
+
+/* Wheels */
+.ayd-wheel {
+  position: absolute; width: 44px; height: 44px;
+  left: -22px; top: -22px;
+}
+
+.ayd-tyre {
+  width: 100%; height: 100%; border-radius: 50%;
+  border: 8px solid #111;
+  background: repeating-conic-gradient(#d6d6d6 0 20deg, #777 0 40deg);
+  animation: ayd-c-spin 0.575s linear infinite;
+  position: relative;
+}
+
+.ayd-tyre::after {
+  content: ""; position: absolute; inset: 7px;
+  border-radius: 50%; background: #333;
+}
+
+@keyframes ayd-c-spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 520px) { .ayd-car-world { scale: .7; } }

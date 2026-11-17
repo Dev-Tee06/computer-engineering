@@ -1,0 +1,221 @@
+.student-ball-canvas {
+  display: block;
+  width: min(100%, 600px);
+  height: auto;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.arinmo-ball-scene {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  overflow: hidden;
+  background: #080f1e;
+  color: #fff;
+}
+
+.arinmo-ball-scene__title {
+  position: absolute;
+  top: 16px;
+  width: 100%;
+  text-align: center;
+  color: #7dd3fc;
+  font-weight: 700;
+}
+
+.arinmo-ball-scene__ball {
+  position: absolute;
+  left: 50%;
+  bottom: 44px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ff8a80, #c0392b);
+  animation: arinmo-ball-bounce 1.2s ease-in-out infinite;
+}
+
+.arinmo-ball-scene__ground {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 28px;
+  background: #172338;
+  border-top: 2px solid #334155;
+}
+
+@keyframes arinmo-ball-bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -145px); }
+}
+
+.student-night-scene {
+  position: relative;
+  width: 100%;
+  height: min(460px, 70vh);
+  min-height: 320px;
+  overflow: hidden;
+  background: #0a0a2a;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.student-night-scene__sky {
+  position: relative;
+  height: 70%;
+  overflow: hidden;
+  background: linear-gradient(#0a0a2a, #1a1a4a);
+}
+
+.student-night-scene__title {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+.student-night-scene__star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff;
+  animation: student-star-twinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes student-star-twinkle {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+.student-night-scene__moon {
+  position: absolute;
+  top: 40px;
+  left: -80px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #f5f5dc;
+  box-shadow: 0 0 20px #f5f5dc, 0 0 40px #f5f5dc;
+  animation: student-moon-travel 12s linear infinite;
+}
+
+.student-night-scene__moon span {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #e0e0c0;
+}
+
+.student-night-scene__moon span:first-child {
+  top: 20px;
+  left: 15px;
+}
+
+.student-night-scene__moon span:last-child {
+  top: 40px;
+  left: 40px;
+  width: 10px;
+  height: 10px;
+}
+
+@keyframes student-moon-travel {
+  0% { left: -80px; top: 60px; }
+  50% { left: 50%; top: 30px; }
+  100% { left: 100%; top: 70px; }
+}
+
+.student-night-scene__ground {
+  position: relative;
+  z-index: 1;
+  height: 30%;
+  border-top: 8px solid #444;
+  background: #2d2d2d;
+}
+
+.student-night-scene__road-line {
+  position: absolute;
+  top: 45%;
+  width: 100%;
+  height: 6px;
+  background: repeating-linear-gradient(to right, #fff 0 40px, transparent 40px 80px);
+  animation: student-road-move 1s linear infinite;
+}
+
+@keyframes student-road-move {
+  to { background-position: -80px 0; }
+}
+
+.student-night-scene__car {
+  position: absolute;
+  z-index: 2;
+  bottom: 60px;
+  left: -120px;
+  width: 100px;
+  height: 40px;
+  border-radius: 8px 8px 4px 4px;
+  background: #e74c3c;
+  animation: student-car-drive 8s linear infinite;
+}
+
+.student-night-scene__car-top {
+  position: absolute;
+  top: -18px;
+  left: 20px;
+  width: 50px;
+  height: 20px;
+  border-radius: 6px 6px 0 0;
+  background: #c0392b;
+}
+
+.student-night-scene__wheel {
+  position: absolute;
+  bottom: -8px;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #555;
+  border-radius: 50%;
+  background: #222;
+}
+
+.student-night-scene__wheel--left { left: 12px; }
+.student-night-scene__wheel--right { right: 12px; }
+
+@keyframes student-car-drive {
+  to { left: 110%; }
+}
+
+.student-night-scene__ball {
+  position: absolute;
+  z-index: 2;
+  bottom: 80px;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #c0392b);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  animation: student-scene-bounce 1.2s ease-in-out infinite;
+}
+
+@keyframes student-scene-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-120px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .student-ball-scene__ball,
+  .student-night-scene__star,
+  .student-night-scene__moon,
+  .student-night-scene__road-line,
+  .student-night-scene__car,
+  .student-night-scene__ball {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+  }
+}

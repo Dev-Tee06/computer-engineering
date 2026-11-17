@@ -1,0 +1,39 @@
+.anim-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.anim-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--navy-border);
+  background: rgba(24, 24, 27, 0.04);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.anim-btn:hover {
+  background: rgba(24, 24, 27, 0.08);
+  color: var(--text-primary);
+  border-color: rgba(24, 24, 27, 0.14);
+}
+
+.anim-btn--primary {
+  background: var(--gradient-accent);
+  color: #fff;
+  border-color: transparent;
+}
+
+.anim-btn--primary:hover {
+  box-shadow: 0 8px 20px rgba(24, 24, 27, 0.22);
+  color: #fff;
+}

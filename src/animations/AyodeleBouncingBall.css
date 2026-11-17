@@ -1,0 +1,91 @@
+/* Ayodele Ayodeji Oluwasegun — CPE/2022/1034
+   3D Bouncing Ball — preserved from original CSS submission */
+
+/* All classes prefixed with ayd-ball- to prevent conflicts */
+.ayd-ball-wrap {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background: radial-gradient(circle at 50% 30%, #2b3a67, #121626 70%);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ayd-ball-scene {
+  width: 100%; height: 100%;
+  perspective: 900px; perspective-origin: 50% 35%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.ayd-ball-world {
+  position: relative; width: 0; height: 0;
+  transform-style: preserve-3d;
+  transform: translateY(80px) rotateX(-22deg);
+}
+
+.ayd-ball-floor {
+  position: absolute; width: 700px; height: 700px;
+  left: -350px; top: -350px;
+  transform: rotateX(90deg);
+  background:
+    linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px) 0 0 / 50px 50px,
+    linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px) 0 0 / 50px 50px,
+    #1b2347;
+  border-radius: 50%;
+  mask-image: radial-gradient(circle, #000 40%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle, #000 40%, transparent 72%);
+}
+
+.ayd-ball-path {
+  position: absolute; transform-style: preserve-3d;
+  animation: ayd-b-travel 4.8s ease-in-out infinite alternate;
+}
+
+@keyframes ayd-b-travel {
+  from { transform: translate3d(-170px, 0, -170px); }
+  to   { transform: translate3d(170px, 0, 170px); }
+}
+
+.ayd-ball-bounce {
+  position: absolute;
+  width: 80px; height: 80px;
+  left: -40px; top: -80px;
+  transform-style: preserve-3d;
+  animation: ayd-b-bounce 1.2s infinite;
+}
+
+@keyframes ayd-b-bounce {
+  0%   { transform: translateY(0); animation-timing-function: cubic-bezier(.2,.7,.4,1); }
+  50%  { transform: translateY(-230px); animation-timing-function: cubic-bezier(.6,0,.8,.3); }
+  100% { transform: translateY(0); }
+}
+
+.ayd-ball-ball {
+  width: 100%; height: 100%; border-radius: 50%;
+  transform-origin: 50% 100%;
+  background:
+    radial-gradient(circle at 32% 28%, #fff 0, transparent 18%),
+    radial-gradient(circle at 35% 30%, #f07070, #e63946 45%, #7a1010);
+  box-shadow: inset -10px -14px 24px rgba(0,0,0,.45);
+  animation: ayd-b-squash 1.2s infinite;
+}
+
+@keyframes ayd-b-squash {
+  0%, 100% { transform: scale(1.25, .72); }
+  12%, 88%  { transform: scale(1, 1); }
+}
+
+.ayd-ball-shadow {
+  position: absolute;
+  width: 80px; height: 80px;
+  left: -40px; top: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,0,0,.75), transparent 70%);
+  transform: rotateX(90deg);
+  animation: ayd-b-shadow 1.2s infinite;
+}
+
+@keyframes ayd-b-shadow {
+  0%, 100% { transform: rotateX(90deg) scale(1.1); opacity: .9; }
+  50%       { transform: rotateX(90deg) scale(.5);  opacity: .3; }
+}

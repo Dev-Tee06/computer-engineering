@@ -1,0 +1,103 @@
+/* Adekunle Abdullahi Babatunde — CPE/2022/1006
+   3D CSS Car built from box primitives, preserved from car.html / car.css */
+
+.adk-wrap {
+  width: 100%; height: 380px;
+  background: linear-gradient(#6ec3f5, #cfeeff 60%);
+  border-radius: 12px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  perspective: 900px; perspective-origin: 50% 40%;
+}
+
+.adk-car {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateY(40px) rotateX(-18deg) rotateY(-25deg);
+  animation: adk-turn 10s linear infinite;
+}
+
+@keyframes adk-turn {
+  from { transform: translateY(40px) rotateX(-18deg) rotateY(-25deg); }
+  to   { transform: translateY(40px) rotateX(-18deg) rotateY(335deg); }
+}
+
+/* Generic 6-sided box */
+.adk-box {
+  position: absolute;
+  width: var(--w, 200px); height: var(--h, 50px);
+  left: calc(var(--x, 0px) - var(--w, 200px) / 2);
+  top: calc(var(--y, 0px) - var(--h, 50px) / 2);
+  transform-style: preserve-3d;
+}
+
+.adk-box .f { transform: translateZ(calc(var(--d, 80px) / 2)); }
+.adk-box .k { transform: rotateY(180deg) translateZ(calc(var(--d, 80px) / 2)); }
+.adk-box .r { transform: rotateY(90deg) translateZ(calc(var(--w, 200px) / 2)); width: var(--d, 80px); left: calc((var(--w, 200px) - var(--d, 80px)) / 2); }
+.adk-box .l { transform: rotateY(-90deg) translateZ(calc(var(--w, 200px) / 2)); width: var(--d, 80px); left: calc((var(--w, 200px) - var(--d, 80px)) / 2); }
+.adk-box .t { transform: rotateX(90deg) translateZ(calc(var(--h, 50px) / 2)); height: var(--d, 80px); top: calc((var(--h, 50px) - var(--d, 80px)) / 2); }
+.adk-box .u { transform: rotateX(-90deg) translateZ(calc(var(--h, 50px) / 2)); height: var(--d, 80px); top: calc((var(--h, 50px) - var(--d, 80px)) / 2); }
+.adk-box > div { position: absolute; width: var(--w, 200px); height: var(--h, 50px); }
+
+/* Body */
+.adk-body {
+  --w:220px; --h:40px; --d:90px;
+  --x:0px; --y:-35px;
+}
+.adk-body .f,.adk-body .k { background:#e63946; }
+.adk-body .r { background:#c8252e; }
+.adk-body .l { background:#9e1824; }
+.adk-body .t { background:#f07070; }
+.adk-body .u { background:#222; }
+
+/* Cabin */
+.adk-cabin {
+  --w:110px; --h:35px; --d:78px;
+  --x:-20px; --y:-75px;
+}
+.adk-cabin .f,.adk-cabin .k,.adk-cabin .r,.adk-cabin .l {
+  background: linear-gradient(135deg, rgba(173,216,230,0.9), rgba(70,130,180,0.9));
+  border: 3px solid #8a1520;
+}
+.adk-cabin .t { background:#f07070; }
+.adk-cabin .u { background:#222; }
+
+/* Light elements */
+.adk-light {
+  position: absolute;
+  width: 18px; height: 12px;
+  background: #fff3b0;
+  box-shadow: 0 0 14px 4px rgba(255,235,120,.8);
+  border-radius: 3px;
+  top: -47px;
+}
+.adk-light { right: -120px; }
+.adk-light.b { left: -120px; background: #ff1f1f; box-shadow: 0 0 10px 3px rgba(255,30,30,.7); }
+
+/* Wheels */
+.adk-wheel {
+  position: absolute;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(#aaa 0 20deg, #666 0 40deg);
+  border: 7px solid #111;
+  animation: adk-spin 0.4s linear infinite;
+}
+.adk-wheel::after {
+  content:''; position:absolute; inset:5px; border-radius:50%; background:#333;
+}
+.adk-w1 { transform: translate3d(-95px,-20px,45px); }
+.adk-w2 { transform: translate3d(-95px,-20px,-45px); }
+.adk-w3 { transform: translate3d(95px,-20px,45px); }
+.adk-w4 { transform: translate3d(95px,-20px,-45px); }
+
+@keyframes adk-spin { to { transform: rotate(360deg); } }
+/* override per wheel to include translate */
+.adk-w1 { transform: translate3d(-95px,-55px,45px); animation: adk-spin1 0.4s linear infinite; }
+.adk-w2 { transform: translate3d(-95px,-55px,-45px); animation: adk-spin2 0.4s linear infinite; }
+.adk-w3 { transform: translate3d(95px,-55px,45px); animation: adk-spin3 0.4s linear infinite; }
+.adk-w4 { transform: translate3d(95px,-55px,-45px); animation: adk-spin4 0.4s linear infinite; }
+
+@keyframes adk-spin1 { from{transform:translate3d(-95px,-55px,45px) rotate(0deg)} to{transform:translate3d(-95px,-55px,45px) rotate(360deg)} }
+@keyframes adk-spin2 { from{transform:translate3d(-95px,-55px,-45px) rotate(0deg)} to{transform:translate3d(-95px,-55px,-45px) rotate(360deg)} }
+@keyframes adk-spin3 { from{transform:translate3d(95px,-55px,45px) rotate(0deg)} to{transform:translate3d(95px,-55px,45px) rotate(360deg)} }
+@keyframes adk-spin4 { from{transform:translate3d(95px,-55px,-45px) rotate(0deg)} to{transform:translate3d(95px,-55px,-45px) rotate(360deg)} }

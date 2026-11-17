@@ -1,0 +1,144 @@
+/* Timothy Abayomi Joshua — CPE/2021/1069
+   All animations preserved from original submission. */
+
+/* ── Bouncing Ball ─────────────────────────── */
+.tim-ball-scene {
+  height: 250px; position: relative; overflow: hidden; border-radius: 12px;
+  background: linear-gradient(#172554, #1e40af);
+}
+
+.tim-ball-object {
+  position: absolute;
+  width: 52px; height: 52px; border-radius: 50%;
+  bottom: 15px; left: 5%;
+  background: radial-gradient(circle at 30% 25%, #fff7ae, #facc15, #a16207);
+  box-shadow: 0 5px 12px #0008;
+  animation: tim-ballTravel 4s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+
+.tim-ball-floor {
+  position: absolute; bottom: 8px; left: 5%;
+  width: 45px; height: 9px;
+  background: #0008; border-radius: 50%; filter: blur(3px);
+  animation: tim-floorShadow 4s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+
+@keyframes tim-ballTravel {
+  0%   { left: 5%;  bottom: 15px; }
+  50%  { left: 45%; bottom: 175px; }
+  100% { left: 88%; bottom: 15px; }
+}
+
+@keyframes tim-floorShadow {
+  0%, 100% { transform: scale(1); opacity: .5; }
+  50%       { transform: scale(.4); opacity: .2; }
+}
+
+/* ── Moving Car ────────────────────────────── */
+.tim-car-scene {
+  height: 250px; position: relative; overflow: hidden; border-radius: 12px;
+  background: linear-gradient(#7dd3fc 60%, #bae6fd);
+}
+
+.tim-sunlight {
+  position: absolute; width: 48px; height: 48px;
+  background: #fde68a; border-radius: 50%;
+  top: 20px; right: 12%; box-shadow: 0 0 25px #fbbf24;
+}
+
+.tim-cloud {
+  position: absolute; width: 65px; height: 22px;
+  background: white; border-radius: 20px; top: 55px; left: 15%;
+}
+.tim-cloud::before {
+  content: ""; position: absolute;
+  width: 30px; height: 30px; background: white; border-radius: 50%;
+  top: -15px; left: 12px;
+}
+
+.tim-roadway {
+  position: absolute; width: 100%; height: 65px; bottom: 0;
+  background: #334155; border-top: 5px solid #64748b;
+}
+.tim-roadway::after {
+  content: ""; position: absolute; width: 100%; height: 4px; top: 28px;
+  background: repeating-linear-gradient(to right, white 0 35px, transparent 35px 65px);
+}
+
+.tim-vehicle {
+  position: absolute; bottom: 48px; left: 2%; font-size: 48px;
+  animation: tim-vehicleJourney 9s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes tim-vehicleJourney {
+  0%   { left: 2%;                transform: scaleX(1); }
+  45%  { left: calc(100% - 75px); transform: scaleX(1); }
+  50%  { left: calc(100% - 75px); transform: scaleX(-1); }
+  95%  { left: 2%;                transform: scaleX(-1); }
+  100% { left: 2%;                transform: scaleX(1); }
+}
+
+/* ── Moving Moon ───────────────────────────── */
+.tim-moon-scene {
+  height: 250px; position: relative; overflow: hidden; border-radius: 12px;
+  background: radial-gradient(ellipse at bottom, #1e3a8a, #020617);
+}
+
+.tim-stars {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 15% 20%, white 99%, transparent),
+    radial-gradient(2px 2px at 30% 60%, white 99%, transparent),
+    radial-gradient(2px 2px at 50% 15%, white 99%, transparent),
+    radial-gradient(2px 2px at 70% 40%, white 99%, transparent),
+    radial-gradient(2px 2px at 85% 75%, white 99%, transparent),
+    radial-gradient(2px 2px at 95% 20%, white 99%, transparent);
+  animation: tim-starGlow 2s infinite alternate;
+  animation-play-state: paused;
+}
+
+.tim-moon-object {
+  position: absolute; left: 5%; top: 65px; font-size: 65px;
+  filter: drop-shadow(0 0 15px #fef3c7);
+  animation: tim-moonJourney 8s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+
+.tim-night-ground {
+  position: absolute; bottom: -55px; left: -10%; width: 120%; height: 100px;
+  background: #0f172a; border-radius: 50% 50% 0 0;
+}
+
+@keyframes tim-moonJourney {
+  from { left: 5%;  top: 65px; }
+  to   { left: 85%; top: 105px; }
+}
+
+@keyframes tim-starGlow {
+  from { opacity: .3; }
+  to   { opacity: 1; }
+}
+
+/* playing state */
+.tim-playing .tim-ball-object,
+.tim-playing .tim-ball-floor,
+.tim-playing .tim-vehicle,
+.tim-playing .tim-stars,
+.tim-playing .tim-moon-object {
+  animation-play-state: running !important;
+}
+
+/* controls */
+.tim-controls {
+  display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;
+}
+
+.tim-btn {
+  padding: 9px 20px; background: #0891b2; border: none; border-radius: 7px;
+  color: white; font-weight: bold; cursor: pointer; font-size: 13px; font-family: inherit;
+  transition: background 0.2s;
+}
+.tim-btn:hover { background: #0e7490; }
