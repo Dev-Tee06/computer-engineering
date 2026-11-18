@@ -247,28 +247,26 @@ export const assignments = [
 
   // ── Olasunkanmi Opemipo ──────────────────────────────────────────────────
   {
-    id: "olasunkanmi-blender-car",
+    id: "olasunkanmi-car",
     studentId: "olasunkanmi-opemipo",
-    title: "Moving 3D Car (Blender)",
+    title: "Moving 3D Car",
     description:
-      "Blender Python (bpy) script: realistic 3D car with four corner wheels, grass/road environment, sun light, camera. 120 frames at 24fps.",
+      "A CSS 3D car animation with rotating wheels and a moving road.",
     courseCode: "CPE 505",
-    animationType: "blender",
-    component: "BlenderVideoPreview",
-    previewPath: "/videos/olasunkanmi-car.mp4",
-    sourceStatus: "blender-script-only",
+    animationType: "css",
+    component: "Adekunle3DCar",
+    sourceStatus: "complete",
   },
   {
-    id: "olasunkanmi-blender-moon",
+    id: "olasunkanmi-moon",
     studentId: "olasunkanmi-opemipo",
-    title: "Moon Revolving Around Earth (Blender)",
+    title: "Moon Revolving Around Earth",
     description:
-      "Blender Python (bpy) script: Earth with procedural ocean/land/cloud materials, tidally-locked Moon, starfield, orbital path, seamless 240-frame loop.",
+      "A CSS animation of the Moon orbiting Earth beneath a starry sky.",
     courseCode: "CPE 505",
-    animationType: "blender",
-    component: "BlenderVideoPreview",
-    previewPath: "/videos/olasunkanmi-moon.mp4",
-    sourceStatus: "blender-script-only",
+    animationType: "css",
+    component: "AyodeleMovingMoon",
+    sourceStatus: "complete",
   },
 
   // ── Ajagun Fiyinfunoluwa James ─────────────────────────────────────────

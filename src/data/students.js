@@ -112,13 +112,13 @@ export const students = [
   },
   {
     id: "olasunkanmi-opemipo",
-    name: "Olasunkanmi Opemipo",
+    name: "OLASUNKANMI OPEMIPO",
     matricNumber: "CPE/2021/1054",
-    image: "/images/Olasunkami Opemipo.jpg",
+    image: "/images/Olasunkanmi Opemipo.jpg",
     department: "Computer Engineering",
     faculty: "Faculty of Computing and Information Engineering",
     level: "500",
-    assignmentIds: ["olasunkanmi-blender-car", "olasunkanmi-blender-moon"],
+    assignmentIds: ["olasunkanmi-car", "olasunkanmi-moon"],
   },
   // Additional students from photos
   {
